@@ -80,6 +80,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         Text(
             text = "Kattintások: ${clicks}"
         )
+        if (clicks >= 10) {
+            Text(
+                text = "Elérted a 10-et!",
+            )
+        }
         Button(
             onClick = {
                 clicks++
