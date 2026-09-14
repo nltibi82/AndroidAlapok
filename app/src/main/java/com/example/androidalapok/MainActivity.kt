@@ -33,11 +33,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            var clicks by remember { mutableStateOf(0) }
             AndroidAlapokTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Tibi",
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        onClick = {println("+1")}
                     )
                 }
             }
@@ -46,8 +48,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    var clicks by remember { mutableStateOf(0) }
+fun Greeting(
+    name: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+    clicks: Int
+)
+{
     Column(
         modifier = modifier
             .fillMaxHeight()
@@ -80,14 +87,17 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         Text(
             text = "Kattintások: ${clicks}"
         )
-        if (clicks >= 10) {
-            Text(
-                text = "Elérted a 10-et!",
-            )
-        }
+        Text (
+            text = if (clicks >= 10) {
+                        "Kezdek belejönni! 😎"
+                      } else {
+                          "Még tanulok..."
+                    }
+        )
+
         Button(
             onClick = {
-                clicks++
+                onClick()
             }
         ) {
             Text(
@@ -112,6 +122,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     AndroidAlapokTheme {
-        Greeting("Tibi")
+        Greeting("Tibi",onClick = { })
     }
 }
