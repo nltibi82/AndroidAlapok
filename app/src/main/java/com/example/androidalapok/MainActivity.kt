@@ -18,6 +18,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -45,7 +47,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    var clicks = remember { mutableStateOf(0) }
+    var clicks by remember { mutableStateOf(0) }
     Column(
         modifier = modifier
             .fillMaxHeight()
@@ -67,24 +69,34 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 .padding(16.dp)
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
-        ){
+        ) {
             Text(
                 text = "Android!"
             )
-            Text (
-                text="Kotlin"
+            Text(
+                text = "Kotlin"
             )
         }
-        Text (
-            text = "Kattintások: ${clicks.value}"
+        Text(
+            text = "Kattintások: ${clicks}"
         )
         Button(
             onClick = {
-                clicks.value++
+                clicks++
             }
         ) {
             Text(
-                text = "Kattints!",
+                text = "+1",
+            )
+
+        }
+        Button(
+            onClick = {
+                clicks+=5
+            }
+        ) {
+            Text(
+                text = "+5",
             )
 
         }
