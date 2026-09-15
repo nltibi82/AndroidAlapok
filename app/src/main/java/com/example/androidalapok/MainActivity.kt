@@ -39,7 +39,8 @@ class MainActivity : ComponentActivity() {
                     Greeting(
                         name = "Tibi",
                         modifier = Modifier.padding(innerPadding),
-                        onClick = {println("+1")}
+                        onClick = {value -> clicks += value },
+                        clicks = clicks
                     )
                 }
             }
@@ -51,7 +52,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(
     name: String,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit,
+    onClick: (Int) -> Unit,
     clicks: Int
 )
 {
@@ -97,7 +98,7 @@ fun Greeting(
 
         Button(
             onClick = {
-                onClick()
+                onClick(1)
             }
         ) {
             Text(
@@ -107,7 +108,7 @@ fun Greeting(
         }
         Button(
             onClick = {
-                clicks+=5
+                onClick(5)
             }
         ) {
             Text(
@@ -122,6 +123,6 @@ fun Greeting(
 @Composable
 fun GreetingPreview() {
     AndroidAlapokTheme {
-        Greeting("Tibi",onClick = { })
+        Greeting("Tibi",onClick = { }, clicks = 0)
     }
 }
