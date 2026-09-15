@@ -50,8 +50,9 @@ fun Greeting(
                 text = "Kotlin"
             )
         }
-        Text(
-            text = "Kattintások: ${clicks}"
+        Counter(
+            clicks = clicks,
+            onClick = onClick
         )
         Text (
             text = if (clicks >= 10) {
@@ -61,25 +62,5 @@ fun Greeting(
             }
         )
 
-        Button(
-            onClick = {
-                onClick(1)
-            }
-        ) {
-            Text(
-                text = "+1",
-            )
-
-        }
-        Button(
-            onClick = {
-                onClick(5)
-            }
-        ) {
-            Text(
-                text = "+5",
-            )
-
-        }
     }
 }
