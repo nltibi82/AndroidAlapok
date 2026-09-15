@@ -48,76 +48,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(
-    name: String,
-    modifier: Modifier = Modifier,
-    onClick: (Int) -> Unit,
-    clicks: Int
-)
-{
-    Column(
-        modifier = modifier
-            .fillMaxHeight()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Bottom
-    ) {
-        Text(
-            text = "Szia $name!"
-        )
-        Spacer(
-            modifier = Modifier
-                .weight(1f)
-        )
-        Text(
-            text = "Android tanulás!",
-        )
-        Row(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                text = "Android!"
-            )
-            Text(
-                text = "Kotlin"
-            )
-        }
-        Text(
-            text = "Kattintások: ${clicks}"
-        )
-        Text (
-            text = if (clicks >= 10) {
-                        "Kezdek belejönni! 😎"
-                      } else {
-                          "Még tanulok..."
-                    }
-        )
 
-        Button(
-            onClick = {
-                onClick(1)
-            }
-        ) {
-            Text(
-                text = "+1",
-            )
-
-        }
-        Button(
-            onClick = {
-                onClick(5)
-            }
-        ) {
-            Text(
-                text = "+5",
-            )
-
-        }
-    }
-}
 
 @Preview(showBackground = true)
 @Composable
