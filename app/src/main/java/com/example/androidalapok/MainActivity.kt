@@ -36,14 +36,20 @@ class MainActivity : ComponentActivity() {
             var clicks by remember { mutableStateOf(0) }
             AndroidAlapokTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Column {
                     Greeting(
                         name = "Tibi",
                         modifier = Modifier.padding(innerPadding),
-                        onClick = {value -> if (value+clicks >= 0) {
-                            clicks += value
-                        } },
                         clicks = clicks
                     )
+                    Counter(
+                        onClick = { value ->
+                            if (clicks + value >= 0) {
+                                clicks += value
+                            }
+                        }
+                    )
+                    }
                 }
             }
         }
@@ -55,6 +61,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     AndroidAlapokTheme {
-        Greeting("Tibi",onClick = { }, clicks = 0)
+        Greeting("Tibi", clicks = 0)
     }
 }

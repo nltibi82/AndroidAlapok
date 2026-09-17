@@ -17,22 +17,16 @@ import androidx.compose.ui.unit.dp
 fun Greeting(
     name: String,
     modifier: Modifier = Modifier,
-    onClick: (Int) -> Unit,
     clicks: Int
 )
 {
     Column(
         modifier = modifier
-            .fillMaxHeight()
             .padding(16.dp),
         verticalArrangement = Arrangement.Bottom
     ) {
         Text(
             text = "Szia $name!"
-        )
-        Spacer(
-            modifier = Modifier
-                .weight(1f)
         )
         Text(
             text = "Android tanulás!",
@@ -50,10 +44,7 @@ fun Greeting(
                 text = "Kotlin"
             )
         }
-        Counter(
-            //clicks = clicks,
-            onClick = onClick
-        )
+
         StatusMessage(
             clicks = clicks
         )
