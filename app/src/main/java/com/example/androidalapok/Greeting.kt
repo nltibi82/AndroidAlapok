@@ -54,13 +54,8 @@ fun Greeting(
             //clicks = clicks,
             onClick = onClick
         )
-        Text (
-            text = if (clicks >= 10) {
-                "Kezdek belejönni! 😎"
-            } else {
-                "Még tanulok..."
-            }
+        StatusMessage(
+            clicks = clicks
         )
-
     }
 }
