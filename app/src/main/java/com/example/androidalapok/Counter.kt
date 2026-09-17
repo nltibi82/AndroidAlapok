@@ -6,12 +6,9 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun Counter(
-    clicks: Int,
     onClick: (Int) -> Unit
 ) {
-    Text(
-        text = "Kattintások: ${clicks}"
-    )
+
     Button(
         onClick = {
             onClick(1)
@@ -29,6 +26,26 @@ fun Counter(
     ) {
         Text(
             text = "+5",
+        )
+
+    }
+    Button(
+        onClick = {
+            onClick(10)
+        }
+    ) {
+        Text(
+            text = "+10",
+        )
+
+    }
+    Button(
+        onClick = {
+            onClick(-1)
+        }
+    ) {
+        Text(
+            text = "-1",
         )
 
     }

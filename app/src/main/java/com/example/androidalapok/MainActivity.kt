@@ -39,7 +39,9 @@ class MainActivity : ComponentActivity() {
                     Greeting(
                         name = "Tibi",
                         modifier = Modifier.padding(innerPadding),
-                        onClick = {value -> clicks += value },
+                        onClick = {value -> if (value+clicks >= 0) {
+                            clicks += value
+                        } },
                         clicks = clicks
                     )
                 }
@@ -47,7 +49,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 
 
 @Preview(showBackground = true)

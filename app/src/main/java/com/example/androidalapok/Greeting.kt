@@ -51,7 +51,7 @@ fun Greeting(
             )
         }
         Counter(
-            clicks = clicks,
+            //clicks = clicks,
             onClick = onClick
         )
         Text (
